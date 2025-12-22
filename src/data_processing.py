@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
-from src.utils import map_ip_to_country
+from src.util import map_ip_to_country
 def load_data(file_path: str) -> pd.DataFrame:
     """
     Load data from CSV, Excel, or JSON files based on file extension.

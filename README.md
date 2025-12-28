@@ -49,5 +49,7 @@ characteristics better than mean imputation.
 -Removing Duplicates 
 - Duplicate records were removed based on full-row duplication. 
 -  This prevents bias in frequency-based features and avoids inflating transaction counts. 
-# # Univariate analysis
+# Univariate analysis
 ![alt text](output.png)
+# summary
+![alt text](image.png)

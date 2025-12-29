@@ -28,15 +28,21 @@ adey_innovations
 │   ├── __init__.py 
 │   ├── eda-fraud-data.ipynb 
 │   ├── eda-creditcard.ipynb 
+    ├── feature-engineering.ipynb 
+    ├──model_train.ipynb 
+    ├── fraud_explain.ipynb 
+    ├── credit_model_explain.ipynb 
 ├── src/ 
-│   ├── __pycache__/ 
-│   └── data_processing.py 
+│   ├── __pycache__/
+│   ├── data_processing.py  
+    ├── shap_utility.py     
+    └── util.py 
 ├── requirements.txt 
 ├── README.md 
 └── .gitignore 
 ```
-# Task 1: Data Analysis and Preprocessing 
- Handling Missing Values 
+# Data Analysis and Preprocessing 
+- Handling Missing Values 
 - Numerical features 
 - Imputed using the median to reduce sensitivity to outliers, which are common in 
 fraud data. 
@@ -49,7 +55,44 @@ characteristics better than mean imputation.
 -Removing Duplicates 
 - Duplicate records were removed based on full-row duplication. 
 -  This prevents bias in frequency-based features and avoids inflating transaction counts. 
-# Univariate analysis
-![alt text](output.png)
-# summary
-![alt text](image.png)
+
+#  Model Selection
+### Logistic Regression
+- Use as a baseline and benchmarking model
+- Best for regulatory reporting, explainability, and fast inference
+- Not ideal alone for complex fraud patterns
+### Random Forest
+- Strong non-linear pattern detection
+- Good balance between performance and interpretability
+- Suitable for batch fraud detection and internal risk scoring
+### XGBoost (Recommended Primary Model)
+- Best ROC-AUC and stability across validation
+- Handles imbalanced data and feature interactions effectively
+- Ideal for production deployment and real-time scoring
+
+ ### Handling Class Imbalance
+Always use Stratified splits
+#### Prefer:
+- scale_pos_weight (XGBoost)
+- Class weights (Logistic Regression, Random Forest)
+#### Evaluate using:
+- ROC-AUC
+- Precision-Recall AUC
+- Recall at fixed precision (fraud critical)
+### Evaluation Strategy
+- Do not rely on accuracy
+- Standardize reporting:
+     - Confusion Matrix
+     - ROC Curve
+     -  Precision-Recall Curve
+
+- Track cross-validation variance to detect overfitting
+###  Explainability (Mandatory for Fraud)
+- Use SHAP as the primary explanation tool
+Maintain:
+- Global feature importance (risk drivers)
+- Local explanations (why a transaction was flagged)
+- Store SHAP outputs for:
+    - Audits
+    - Compliance
+    - Model monitoring

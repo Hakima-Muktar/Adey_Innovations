@@ -99,19 +99,19 @@ Maintain:
 
 
 ### Business Recommendations (Fraud Detection System)
-# 1. Risk Reduction & Financial Impact
+### 1. Risk Reduction & Financial Impact
 Deploy real-time fraud scoring at payment authorization to block high-risk transactions before settlement.
 Use risk-based thresholds:
 - High score → auto-block
 - Medium score → step-up verification (OTP, call, ID check)
 - Low score → allow
 This approach minimizes financial loss while protecting genuine customers.
-# 2. Customer Experience Optimization
+### 2. Customer Experience Optimization
 Avoid blanket blocking rules.
 Use model confidence to reduce false declines, especially for loyal customers.
 Apply behavior-based trust scoring (transaction history, frequency, device consistency).
 
-# 3. Operational Efficiency
+### 3. Operational Efficiency
 - Prioritize investigations using fraud probability ranking.
 - Reduce manual review workload by:
 - Auto-approving low-risk transactions
